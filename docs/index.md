@@ -13,6 +13,7 @@
 | 跨仓拓扑、边界、集成契约 | `architecture/system-baseline.md` |
 | 计划(跨仓契约/顺序/验证/回滚) | `plans/` |
 | 产品讨论轨迹 | `discussions/` |
+| 子仓审计 / 评审记录 | `audits/` |
 | 下一步做什么、未决问题 | `backlog/README.md` |
 | 每天做了什么 | `logs/2026/` |
 
@@ -27,4 +28,4 @@
 - `backlog/` 起工作 + 存未决问题。
 - 子仓内部事实由各子仓自己的 `README`/`AGENTS` 拥有,本层不复制。
 
-已激活:`design/` `requirements/` `plans/` `discussions/`。按需激活(用到再建):`audits/` `testing/`。
+已激活:`design/` `requirements/` `plans/` `discussions/` `audits/`。按需激活(用到再建):`testing/`。
