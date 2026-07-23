@@ -1,0 +1,16 @@
+[submodule "OrgReOrg"]
+	path = OrgReOrg
+	url = https://github.com/VariAI/OrgReOrg.git
+	branch = main
+[submodule "OrgReOrgAdmin"]
+	path = OrgReOrgAdmin
+	url = https://github.com/VariAI/OrgReOrgAdmin.git
+	branch = main
+[submodule "OrgReOrgServer"]
+	path = OrgReOrgServer
+	url = https://github.com/VariAI/OrgReOrgServer.git
+	branch = develop
+[submodule "OrgReOrgWeb"]
+	path = OrgReOrgWeb
+	url = https://github.com/VariAI/OrgReOrgWeb.git
+	branch = develop
