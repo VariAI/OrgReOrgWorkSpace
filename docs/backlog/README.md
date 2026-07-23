@@ -10,6 +10,7 @@
 | P0 | **IM 地基:聊天 / 群聊 / 企业通讯录·组织 + 前端 UI·交互**(近两天首要) | 子仓实现 | **现状(2026-07-23 探查):后端 `organization` 模块 + Admin 组织控制台 + Web 通讯录组织树均已建好**。活 = 接通验证(跑栈+建数据+E2E)+ Web 建群接组织树(现死代码)+ 统一两套 org API + 通讯录打磨。群看板/工作台/日程属智能体层,不在此。详见 log。 |
 | P1 | **智能体 provision 通道**(平台→IM,身份统一缝第一切片) | plan-first | 身份层四决策已拍(`discussions/2026-07-23-agent-identity.md`);plan `plans/2026-07-23-agent-provisioning.md`(in progress,契约已定稿进 system-baseline);下一步 Execution 2/3(Server 模块 / 平台注册表,可并行) |
 | P1 | 智能体 MVP 闭环:圈定 scope + 拆跨仓计划 | ask-first → plan-first | 地基之上;据 `requirements/mvp.md`(scope 待圈定);provision 通道是其身份地基 |
+| P1 | ~~数据新鲜度:组织通讯录 CMD 推送闭环~~ **已实现(2026-07-23,Server c9d69af + Web 75555fb),待连库冒烟验收** | implement | 病根(2026-07-23 核实):organization 模块服务端零 SendCMD,Web 通讯录只在挂载时拉一次——桌面端(不会自动刷新)挂几天数据就旧几天。三层修法:①Server organization 变更后下发 `organizationUpdate` CMD ②Web 全局 CMD 监听加分支重拉 directory/units ③长连接重连后兜底重拉目录类数据(+桌面端窗口聚焦超时增量拉)。**同时已立为跨仓约定**(见 system-baseline「数据新鲜度约定」):后续所有新功能的服务端数据变更必须配推送或明确"打开即拉"豁免 |
 | P2 | 记录整体部署 / 反代拓扑(OQ-2) | plan-first | 4 仓 + 悟空IM 如何一起部署;补进 `architecture/system-baseline.md` |
 | P3 | 校验 Server API 契约与 Web/Admin 消费一致 | implement | 对齐 `:8090/v1` 字段口径,受保护区 |
 
