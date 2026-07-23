@@ -24,6 +24,12 @@
 - **Server ↔ 悟空IM**:通讯层 Webhook / API。
 - **部署**:各仓有独立 Dockerfile;整体编排 / 反代未在本层记录(OQ-2)。
 
+### 管理端组织群只读契约
+
+- `GET /v1/manager/group/list` 与 `/group/disablelist` 的群项返回 `category`；`GET /v1/manager/groups/{group_no}/members` 顶层同样返回 `category`。
+- `category=department|team` 表示组织架构托管群。Admin 仅允许查看、发消息，不提供禁言、封禁/解禁或移除成员入口；组织管理页是名称与成员关系的事实源。
+- Server 写接口继续拒绝组织架构托管群的手工修改，前端只读不是安全边界。
+
 ## 集成契约(OQ-1 已定,2026-07-23 用户拍板)
 
 - **方向**:agent 平台(OrgReOrg)= 主干/宿主;IM(Server/Web/Admin)= 平台的**原生 surface**。做「agent 里的 IM」,不做「IM 里的 agent」(见 `project-vision.md`)。
