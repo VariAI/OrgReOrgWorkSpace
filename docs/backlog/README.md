@@ -7,8 +7,9 @@
 
 | P | 工作 | 自主度 | 说明 |
 | --- | --- | --- | --- |
-| P0 | **IM 地基:聊天 / 群聊 / 企业通讯录·组织 + 前端 UI·交互**(近两天首要) | 子仓实现 | **现状(2026-07-23 探查):后端 `organization` 模块 + Admin 组织控制台 + Web 通讯录组织树均已建好**。活 = 接通验证(跑栈+建数据+E2E)+ Web 建群接组织树(现死代码)+ 统一两套 org API + 通讯录打磨。群看板/工作台/日程属数字员工层,不在此。详见 log。 |
-| P1 | 数字员工 MVP 闭环:圈定 scope + 拆跨仓计划 | ask-first → plan-first | 地基之上;据 `requirements/mvp.md`(scope 待圈定) |
+| P0 | **IM 地基:聊天 / 群聊 / 企业通讯录·组织 + 前端 UI·交互**(近两天首要) | 子仓实现 | **现状(2026-07-23 探查):后端 `organization` 模块 + Admin 组织控制台 + Web 通讯录组织树均已建好**。活 = 接通验证(跑栈+建数据+E2E)+ Web 建群接组织树(现死代码)+ 统一两套 org API + 通讯录打磨。群看板/工作台/日程属智能体层,不在此。详见 log。 |
+| P1 | **智能体 provision 通道**(平台→IM,身份统一缝第一切片) | plan-first | 身份层四决策已拍(`discussions/2026-07-23-agent-identity.md`);plan `plans/2026-07-23-agent-provisioning.md`(in progress,契约已定稿进 system-baseline);下一步 Execution 2/3(Server 模块 / 平台注册表,可并行) |
+| P1 | 智能体 MVP 闭环:圈定 scope + 拆跨仓计划 | ask-first → plan-first | 地基之上;据 `requirements/mvp.md`(scope 待圈定);provision 通道是其身份地基 |
 | P2 | 记录整体部署 / 反代拓扑(OQ-2) | plan-first | 4 仓 + 悟空IM 如何一起部署;补进 `architecture/system-baseline.md` |
 | P3 | 校验 Server API 契约与 Web/Admin 消费一致 | implement | 对齐 `:8090/v1` 字段口径,受保护区 |
 
