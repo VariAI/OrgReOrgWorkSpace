@@ -13,10 +13,12 @@
 | P1 | ~~数据新鲜度:组织通讯录 CMD 推送闭环~~ **已实现(2026-07-23,Server c9d69af + Web 75555fb),待连库冒烟验收** | implement | 病根(2026-07-23 核实):organization 模块服务端零 SendCMD,Web 通讯录只在挂载时拉一次——桌面端(不会自动刷新)挂几天数据就旧几天。三层修法:①Server organization 变更后下发 `organizationUpdate` CMD ②Web 全局 CMD 监听加分支重拉 directory/units ③长连接重连后兜底重拉目录类数据(+桌面端窗口聚焦超时增量拉)。**同时已立为跨仓约定**(见 system-baseline「数据新鲜度约定」):后续所有新功能的服务端数据变更必须配推送或明确"打开即拉"豁免 |
 | P2 | 记录整体部署 / 反代拓扑(OQ-2) | plan-first | 4 仓 + 悟空IM 如何一起部署;补进 `architecture/system-baseline.md` |
 | P3 | 校验 Server API 契约与 Web/Admin 消费一致 | implement | 对齐 `:8090/v1` 字段口径,受保护区 |
+| P3 | **组织导入预检性能:逐行查库改批量** | implement | 实测(2026-07-24):400 行 CSV 预检 6.7 秒——PreviewImport 对每行做 getMemberByNo + getUserByIdentity×2,约 1200+ 次单条查询。改法:预检前按 employee_no/username/phone 三键各一次 IN 批量查,行内查内存 map。能用不紧急;导入频次低,先记账 |
 
 ## 暂缓(pending 产品讨论)
 
 - **身份统一**(`plans/2026-07-23-identity-unification.md`,原 P0):2026-07-23 用户叫停——先讨论清楚整个产品再回来。plan 已标 deferred,调研结果留存,Shape A/B 未决。
+- **企微作为组织与用户来源**(`plans/2026-07-24-wecom-directory-source.md`):2026-07-24 用户拍板先不做。调研已毕并留存(Server 承接点 + 企微 API 口径:自建应用 secret 拿得到姓名、拿不到手机号;已定全量对账、不做回调)。重启时补 system-baseline 定位 + 拍 3 个 open(登录方式/uid 策略/权威方向)。
 
 ## Blocked / 待用户拍板(open questions)
 
